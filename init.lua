@@ -134,8 +134,15 @@ do
   --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
   --   See `:help lua-options`
   --   and `:help lua-guide-options`
+  local tabsize = 4
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+  -- Attempting to set tab size using Lua api?
+  vim.opt.tabstop = tabsize
+  vim.opt.shiftwidth = tabsize
+  vim.opt.softtabstop = tabsize
+  vim.opt.expandtab = true
 
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'
@@ -728,7 +735,7 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    -- clangd = {},
+    clangd = {},
     -- gopls = {},
     -- pyright = {},
     -- tsc = {},
